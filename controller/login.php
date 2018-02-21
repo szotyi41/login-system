@@ -1,8 +1,8 @@
 <?php
 
-namespace LoginSystem;
+namespace LoginSystem\Login;
 
-class User {
+class Login {
 
 	public $database;
 	public $connection;
@@ -23,7 +23,7 @@ class User {
   	session_destroy();
   }
 
-  public function signup($user, $pass, $mail) {
+  public function signup() {
   	$sql = "INSERT INTO user (user, pass, mail) VALUES ('$user', '$pass', '$mail')";
   	$result = $this->connection->query($sql);
   	$this->connection->close();

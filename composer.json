@@ -1,0 +1,15 @@
+{
+    "name": "szotyi/login-system",
+    "description": "MVC Login system",
+    "type": "project",
+    "require": {
+        "php": "^7.0"
+    },
+    "license": "opensource",
+    "authors": [
+        {
+            "name": "Péter",
+            "email": "szotyi41@yahoo.com"
+        }
+    ]
+}

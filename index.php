@@ -4,13 +4,16 @@ namespace LoginSystem;
 
 session_start();
 
-require __DIR__ . "/controller/database.php";
-require __DIR__ . "/controller/user.php";
+require_once __DIR__ . "/controller/database.php";
+require_once __DIR__ . "/controller/login.php";
 
 if(isset($_POST["login_name"])) {
 	
+	$name = $_POST["login_name"];
+	$pass = $_POST["login_pass"];
+
 	$user = new User();
-	$login = $user->login($_POST["login_name"], $_POST["login_pass"]);
+	$login = $user->login($name, $pass);
 
 	if($login != null) 
 	{
@@ -18,12 +21,15 @@ if(isset($_POST["login_name"])) {
 		$_SESSION["user_mail"] = $login["mail"];
 
 		echo json_encode($login);
+	} 
+	else 
+	{
+		header("Location: view/login.html");
 	}
 
 } 
-else 
-{
-	header("Location: view/login.html");
-}
+
+header("Location: view/login.html");
+
 
 ?>
