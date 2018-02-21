@@ -13,19 +13,10 @@ class User {
   }
 
   public function login($name, $pass) {
-  	$sql = "SELECT * FROM user WHERE name == $name";
-  	$result = $this->connection->query($sql); 
-    $user = $result->fetch_row();
-
-    return "siekr";
-
-/*
-    if(($name == $user["name"])) 
-    {
-      return json_encode($name);
-    }
-*/
-  	//return json_encode($user);
+  	$sql = "SELECT * FROM user WHERE name = '$name' AND pass = '$pass'";
+  	$result = $this->connection->query($sql) or die("Wrong username or password"); 
+    $user = $result->fetch_array();
+    return $user;
   }
 
   public function logout() {
