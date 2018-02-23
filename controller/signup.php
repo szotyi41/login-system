@@ -1,6 +1,6 @@
 <?php
 
-namespace LoginSystem\Signup;
+namespace LoginSystem;
 
 class Signup {
 

@@ -1,6 +1,6 @@
 <?php
   
-namespace LoginSystem\Database;
+namespace LoginSystem;
 
 use mysqli;
 

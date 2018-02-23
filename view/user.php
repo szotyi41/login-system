@@ -1,3 +1,13 @@
+<?php 
+	session_start(); 
+
+	if(!$_SESSION["user_login"]) {
+		$login = new Login();
+		$login->logout();
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,19 +26,26 @@
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 
 	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/jquery.session.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#name').html("Név: " + name);
+			$("#logout").click(function() {
+				$.ajax(
+					url: "controller/logout.php",
+					success: function() {
+						console.log("Logged out");
+					}
+				);
+			});
 		});
 	</script>
 
 </head>
 <body>
 
-<div id="name"></div>
-<div id="mail"></div>
+<div id="logout">Log out</div>
+<div id="name">Név: <?php echo $_SESSION["user_name"]; ?></div>
+<div id="mail">E-mail: <?php echo $_SESSION["user_mail"]; ?></div>
 
 </body>
 </html>
